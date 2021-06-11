@@ -1,0 +1,6 @@
+﻿{
+  "ConnectionStrings": {
+    "DockerPostgres": "Server=localhost;Port=5432;Database=develop;User Id=dockeradmin;Password=dockeradmin;Search Path=multilayerdemo;",
+    "DockerSqlServer": "Server=localhost,1433;Database=develop;User Id=sa;Password=dockERadmin_1;"
+  }
+}

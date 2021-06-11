@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AspectCore.Extensions.Autofac" />
+    <None Remove="Microsoft.Extensions.Logging" />
+    <None Remove="interceptors\" />
+    <None Remove="interfaces\" />
+    <None Remove="utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AspectCore.Extensions.Autofac" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interceptors\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+</Project>

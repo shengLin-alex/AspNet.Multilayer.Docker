@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspNet.Multilayer.Docker.Helper\AspNet.Multilayer.Docker.Helper.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNet.Multilayer.Docker.Repository\AspNet.Multilayer.Docker.Repository.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="AspectCore.Extensions.Autofac" />
+    <None Remove="Autofac.Extensions.DependencyInjection" />
+    <None Remove="persistent_data\" />
+    <None Remove="persistent_data\postgres\" />
+    <None Remove="persistent_data\sqlserver\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AspectCore.Extensions.Autofac" Version="2.2.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="persistent_data\" />
+    <Folder Include="persistent_data\postgres\" />
+    <Folder Include="persistent_data\sqlserver\" />
+  </ItemGroup>
+</Project>

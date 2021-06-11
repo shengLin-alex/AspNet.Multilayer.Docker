@@ -1,0 +1,52 @@
+﻿version: "3"
+
+services:
+  postgres-docker:
+    image: postgres
+    container_name: MultilayerDemoPostgres
+    volumes:
+      - ${POSTGRES_HOST_DIR}:/var/lib/postgresql/data
+      # - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - netcore-dev
+
+  sqlserver-docker:
+    image: mcr.microsoft.com/mssql/server
+    container_name: MultilayerDemoSqlServer
+    ports:
+      - "${SQLSERVER_PORT}:1433"
+    volumes:
+      - ${SQLSERVER_HOST_DIR}:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
+      - MSSQL_SA_PASSWORD=${SQLSERVER_PASSWORD}
+    networks:
+      - netcore-dev
+  
+  netcore:
+    image: aspnetdocker:dev
+    container_name: AspNetCoreDocker
+    build:
+      context: ../
+      dockerfile: ./Dockerfile
+    # command: ["/bin/bash", "/app/AspNet.Docker.Integration/init.sh"]
+    command: bash -c "cd /app/AspNet.Docker.Integration && dotnet run"
+    ports:
+      - "${APP_HOST_PORT}:80"
+    tty: true
+    networks: 
+      - netcore-dev
+    depends_on:
+      - postgres-docker
+      - sqlserver-docker
+
+networks:
+  netcore-dev:
+    driver: bridge
