@@ -31,7 +31,7 @@ docker compose up
 
 ## .env example
 ```
-APP_HOST_PORT=8001
+HOST_PORT=8001
 
 # The persistent database data folder must be put outside of solution folder
 POSTGRES_HOST_DIR=../../db_data/postgres_data
