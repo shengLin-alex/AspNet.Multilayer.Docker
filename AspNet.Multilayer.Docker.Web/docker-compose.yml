@@ -4,11 +4,11 @@ services:
   postgres-docker:
     image: postgres
     container_name: MultilayerDemoPostgres
+    ports:
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - ${POSTGRES_HOST_DIR}:/var/lib/postgresql/data
       # - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
-    ports:
-      - "${POSTGRES_PORT}:5432"
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
@@ -31,15 +31,14 @@ services:
       - netcore-dev
   
   netcore:
-    image: aspnetdocker:dev
-    container_name: AspNetCoreDocker
+    image: aspnetmultilayer:dev
+    container_name: AspNetMultilayerDocker
+    ports:
+      - "${HOST_PORT}:80"
     build:
       context: ../
       dockerfile: ./Dockerfile
-    # command: ["/bin/bash", "/app/AspNet.Docker.Integration/init.sh"]
-    command: bash -c "cd /app/AspNet.Docker.Integration && dotnet run"
-    ports:
-      - "${APP_HOST_PORT}:80"
+    # command: bash -c "cd /app/AspNet.Multilayer.Docker.Web && dotnet run"
     tty: true
     networks: 
       - netcore-dev
