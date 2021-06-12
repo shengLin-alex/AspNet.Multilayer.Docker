@@ -9,7 +9,7 @@ namespace AspNet.Multilayer.Docker.Web.Controllers
         /// <summary>
         /// User Repo
         /// </summary>
-        private readonly IUserRepositoy UserRepository;
+        private readonly IUserRepository UserRepository;
 
         /// <summary>
         /// Order Repo
@@ -22,7 +22,7 @@ namespace AspNet.Multilayer.Docker.Web.Controllers
         /// <param name="userRepository">User repo</param>
         /// <param name="orderRepository">Order repo</param>
         public ApiController(
-            IUserRepositoy userRepository,
+            IUserRepository userRepository,
             IOrderRepository orderRepository)
         {
             this.UserRepository = userRepository;

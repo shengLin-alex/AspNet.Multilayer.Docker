@@ -82,6 +82,8 @@ namespace AspNet.Multilayer.Docker.Web
         /// <param name="appLifetime">Allows consumers to perform cleanup during a graceful shutdown.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime appLifetime)
         {
+            // 目前一個比較 tricky 的寫法，原本應該要拿到 IServiceProvider
+            // 但是註冊 DynamicProxy 後會變成 IServiceResolver
             this.ApplicationServiceResolver = app.ApplicationServices as IServiceResolver;
             
             // Set solution packages' dependency resolver

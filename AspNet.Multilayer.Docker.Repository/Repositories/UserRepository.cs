@@ -5,7 +5,7 @@ namespace AspNet.Multilayer.Docker.Repository
     /// <summary>
     /// 使用者資料儲存庫
     /// </summary>
-    public class UserRepository : GenericRepository<User, PostgresDbContext>, IUserRepositoy
+    public class UserRepository : GenericRepository<User, PostgresDbContext>, IUserRepository
     {
         /// <summary>
         /// 建構子
