@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using AspNet.Multilayer.Docker.Helper;
 using AspNet.Multilayer.Docker.Repository;
 using AspNet.Multilayer.Docker.Repository.Models;
 using Autofac;
